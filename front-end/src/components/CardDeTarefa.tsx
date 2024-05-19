@@ -1,5 +1,5 @@
 import React from "react";
-import { FaArrowRight, FaArrowLeft, FaCheck } from "react-icons/fa6";
+import { FaArrowRight, FaArrowLeft, FaCheck, FaTrash } from "react-icons/fa6";
 
 // Definição do tipo para a tarefa
 type Tarefa = {
@@ -18,6 +18,7 @@ type CardDeTarefaProps = Tarefa & {
   onToggleRealizada: (id: number) => void;
   onMoverParaProgresso: (id: number) => void;
   onMoverParaNaoRealizada: (id: number) => void;
+  onApagarTarefa: (id: number) => void;
 };
 
 // Componente CardTarefa
@@ -30,6 +31,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
   onToggleRealizada,
   onMoverParaProgresso,
   onMoverParaNaoRealizada,
+  onApagarTarefa,
 }) => {
   // Renderização do card com as informações da tarefa
   return (
@@ -89,12 +91,20 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
         )}
         {/* Botão para mover a tarefa para 'emProgresso', visível apenas quando o status é 'realizada' */}
         {status === "realizada" && (
+          <>
           <button
             onClick={() => onMoverParaProgresso(id)}
             className="ml-4 text-yellow-500 hover:text-yellow-700"
           >
             <FaArrowLeft />
           </button>
+          <button
+          onClick={()=> onApagarTarefa(id)}
+          className="ml-4 text-red-500 hover:text-red-700"
+          >
+            <FaTrash/>
+          </button>
+          </>
         )}
       </div>
     </div>

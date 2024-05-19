@@ -108,6 +108,23 @@ const TabelaDeTarefas: React.FC = () => {
       }
     }
   };
+  // Função para apagar tarefa
+  const onApagarTarefa = async (id: number) => {
+    try {
+      const response = await fetch(`http://localhost:3333/api/tasks/${id}`, {
+        method: "DELETE",
+      });
+  
+      if (!response.ok) {
+        throw new Error("Problema ao apagar a tarefa");
+      }
+  
+      // Remove a tarefa da lista após a exclusão bem-sucedida
+      setTarefas(tarefas.filter(tarefa => tarefa.id !== id));
+    } catch (error) {
+      console.error("Erro ao apagar a tarefa:", error);
+    }
+  };
 
   // Função para buscar as tarefas do servidor
   const fetchTarefas = async () => {
@@ -149,6 +166,7 @@ const TabelaDeTarefas: React.FC = () => {
                   onToggleRealizada={onToggleRealizada}
                   onMoverParaProgresso={onMoverParaProgresso}
                   onMoverParaNaoRealizada={onMoverParaNaoRealizada}
+                  onApagarTarefa={onApagarTarefa}
                 />
               ))}
           </div>
@@ -171,6 +189,7 @@ const TabelaDeTarefas: React.FC = () => {
                   onToggleRealizada={onToggleRealizada}
                   onMoverParaProgresso={onMoverParaNaoRealizada}
                   onMoverParaNaoRealizada={onMoverParaNaoRealizada}
+                  onApagarTarefa={onApagarTarefa}
                 />
               ))}
           </div>
@@ -194,6 +213,7 @@ const TabelaDeTarefas: React.FC = () => {
                   onToggleRealizada={onToggleRealizada}
                   onMoverParaProgresso={onMoverParaProgresso}
                   onMoverParaNaoRealizada={onMoverParaNaoRealizada}
+                  onApagarTarefa={onApagarTarefa}
                 />
               ))}
           </div>
