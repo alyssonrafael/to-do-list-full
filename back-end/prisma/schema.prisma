@@ -13,20 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Task {
-  id          Int      @id @default(autoincrement())
+  id          Int       @id @default(autoincrement())
   descricao   String
-  dia         DateTime
+  dia         DateTime  @map("data") // Alterado para armazenar apenas a data
   categoriaId Int
   categoria   Categoria @relation(fields: [categoriaId], references: [id])
   status      String    @default("não iniciado")
-  cor         String
-  horario     DateTime
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  cor         String    @default("red") // Valor padrão alterado para 'red'
+  // horario removido
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
-
 
 model Categoria {
   id        Int      @id @default(autoincrement())

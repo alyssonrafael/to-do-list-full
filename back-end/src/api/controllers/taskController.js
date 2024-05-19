@@ -4,15 +4,12 @@ const prisma = new PrismaClient();
 
 export const createTask = async (req, res) => {
     try{
-        const{ descricao, dia, categoriaId, status, cor, horario } = req.body;
+        const{ descricao, dia, categoriaId,  } = req.body;
         const task = await prisma.task.create({
             data:{
                 descricao,
                 dia,
                 categoriaId,
-                status,
-                cor,
-                horario
             },
         });
         res.status(201).json(task);
