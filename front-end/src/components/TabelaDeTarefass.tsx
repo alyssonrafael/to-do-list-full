@@ -17,10 +17,11 @@ type Tarefa = {
 interface TabelaDeTarefasProps {
   categoriaSelecionada: number | null;
   searchText: string;
+  dataAtual?: string; 
 }
 
 // Componente funcional TabelaDeTarefas
-const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada, searchText  }) => {
+const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada, searchText, dataAtual }) => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]); // Estado para armazenar a lista de tarefas
 
   // Função para alternar o status da tarefa para 'realizada'
@@ -151,14 +152,13 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada,
     fetchTarefas();
   }, []);
 
-  // Filtra as tarefas com base na categoria selecionada e no texto de busca
-  const tarefasFiltradas = tarefas
-  .filter((tarefa) =>
-    categoriaSelecionada ? tarefa.categoriaId === categoriaSelecionada : true
-  )
-  .filter((tarefa) =>
-    tarefa.descricao.toLowerCase().includes(searchText.toLowerCase())
-  );
+// Filtra as tarefas com base na categoria, texto de busca e data se necessario (vou usar a data na pagina tarefa do dia)
+const tarefasFiltradas = tarefas.filter((tarefa) => {
+  const categoriaMatch = categoriaSelecionada ? tarefa.categoriaId === categoriaSelecionada : true;
+  const searchMatch = tarefa.descricao.toLowerCase().includes(searchText.toLowerCase());
+  const dataMatch = dataAtual ? tarefa.dia === dataAtual : true;
+  return categoriaMatch && searchMatch && dataMatch;
+});
     
     
   return (
