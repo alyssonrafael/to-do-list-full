@@ -13,8 +13,13 @@ type Tarefa = {
   updatedAt: string;
 };
 
+// Define as propriedades esperadas pelo componente TabelaDeTarefas
+interface TabelaDeTarefasProps {
+  categoriaSelecionada: number | null;
+}
+
 // Componente funcional TabelaDeTarefas
-const TabelaDeTarefas: React.FC = () => {
+const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada }) => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]); // Estado para armazenar a lista de tarefas
 
   // Função para alternar o status da tarefa para 'realizada'
@@ -140,10 +145,15 @@ const TabelaDeTarefas: React.FC = () => {
     }
   };
 
-  // Efeito para buscar as tarefas quando o componente é montado
+  // Efeito para buscar as tarefas quando o componente é montado ou quando a categoria selecionada muda
   useEffect(() => {
     fetchTarefas();
-  }, []);
+  }, [categoriaSelecionada]);
+
+    // Filtrar tarefas com base na categoria selecionada e usar esse tarefas filtradas na rederizaçao dos meus cards
+    const tarefasFiltradas = categoriaSelecionada
+    ? tarefas.filter(tarefa => tarefa.categoriaId === categoriaSelecionada)
+    : tarefas;
 
   return (
     <div className="col-span-3">
@@ -157,7 +167,7 @@ const TabelaDeTarefas: React.FC = () => {
             </small>
           </div>
           <div className="max-h-[60vh] overflow-y-auto ">
-            {tarefas
+          {tarefasFiltradas
               .filter((t) => t.status === "não iniciado")
               .map((tarefa) => (
                 <CardDeTarefa
@@ -180,14 +190,14 @@ const TabelaDeTarefas: React.FC = () => {
             </small>
           </div>
           <div className="max-h-[60vh] overflow-y-auto">
-            {tarefas
+          {tarefasFiltradas
               .filter((t) => t.status === "emProgresso")
               .map((tarefa) => (
                 <CardDeTarefa
                   key={tarefa.id}
                   {...tarefa}
                   onToggleRealizada={onToggleRealizada}
-                  onMoverParaProgresso={onMoverParaNaoRealizada}
+                  onMoverParaProgresso={onMoverParaProgresso}
                   onMoverParaNaoRealizada={onMoverParaNaoRealizada}
                   onApagarTarefa={onApagarTarefa}
                 />
@@ -204,7 +214,7 @@ const TabelaDeTarefas: React.FC = () => {
             </small>
           </div>
           <div className="max-h-[60vh] overflow-y-auto">
-            {tarefas
+          {tarefasFiltradas
               .filter((t) => t.status === "realizada")
               .map((tarefa) => (
                 <CardDeTarefa
