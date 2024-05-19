@@ -25,7 +25,7 @@ const NovaTarefa: React.FC = () => {
   //estado para monitorar e controlar a mensagem para o usuario e tem duas propriedades o sucesso que e boleano e o texto que sera passsado
   const [mensagem, setMensagem] = useState({ sucesso: false, texto: "" });
   //esse estado força a atualizaçao da mensagem quando ouver interaçao com o botao
-  const [mensagemCount, setMensagemCount] = useState(0); 
+  const [mensagemCount, setMensagemCount] = useState(0);
   // Efeito para carregar as categorias ao montar o componente
   useEffect(() => {
     fetch("http://localhost:3333/api/categories")
@@ -36,12 +36,12 @@ const NovaTarefa: React.FC = () => {
   // Função para lidar com o envio do formulário
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
+
     // Redefina a mensagem
     setMensagem({ sucesso: false, texto: "" });
     // Incrementa o contador de mensagens forçando ela a aparecer
     setMensagemCount(mensagemCount + 1);
-  
+
     try {
       // Verifique se algum campo está vazio
       if (!formData.descricao || !formData.data || !formData.categoria) {
@@ -49,7 +49,7 @@ const NovaTarefa: React.FC = () => {
         setMensagem({ sucesso: false, texto: "Preencha todos os campos." });
         return;
       }
-  
+
       // Formata a data para ISO 8601 que e o padrao no banco de dados logo o formato tem que ir o mesmo para nao erro 400
       const dataFormatada = new Date(formData.data).toISOString();
       // Envia a requisição para criar a tarefa
@@ -63,10 +63,9 @@ const NovaTarefa: React.FC = () => {
           dia: dataFormatada, // Use a data formatada
           categoriaId: formData.categoria, //id da categoria para o banco de dados
           cor: "red", // Cor padrão que sera usada na borda do card para indicaar que nao foi iniciada
-          horario: dataFormatada, // Use a data formatada
         }),
       });
-  
+
       if (response.ok) {
         // Limpe os inputs após a submissão bem-sucedida
         setFormData({
@@ -99,7 +98,7 @@ const NovaTarefa: React.FC = () => {
   ) => {
     // Extrai o nome e o valor do campo do formulário que foi alterado
     const { name, value } = e.target;
-  
+
     // Atualiza o estado 'formData' com os dados do formulário atualizados
     setFormData({
       ...formData, // Mantém os dados existentes do 'formData'
@@ -138,7 +137,10 @@ const NovaTarefa: React.FC = () => {
             value={formData.categoria}
             onChange={handleInputChange}
             name="categoria"
-            options={categorias.map((categoria) => categoria.nome)}
+            options={categorias.map((categoria) => ({
+              label: categoria.nome,
+              value: categoria.id.toString(),
+            }))}
           />
           {/* Mensagem de sucesso ou erro */}
           <MensagemCard
