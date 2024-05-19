@@ -163,7 +163,7 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada 
           <div className="flex justify-center">
             <h2 className="text-center text-2xl pt-3">Não Realizadas </h2>
             <small className="text-center pt-3 ml-2">
-              ({tarefas.filter((t) => t.status === "não iniciado").length})
+              ({tarefasFiltradas.filter((t) => t.status === "não iniciado").length})
             </small>
           </div>
           <div className="max-h-[60vh] overflow-y-auto ">
@@ -186,7 +186,7 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada 
           <div className="flex justify-center">
             <h2 className="text-center text-2xl pt-3">Em Progesso </h2>
             <small className="text-center pt-3 ml-2">
-              ({tarefas.filter((t) => t.status === "emProgresso").length})
+              ({tarefasFiltradas.filter((t) => t.status === "emProgresso").length})
             </small>
           </div>
           <div className="max-h-[60vh] overflow-y-auto">
@@ -210,7 +210,7 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada 
           <div className="flex justify-center">
             <h2 className="text-center text-2xl pt-3">Finalizadas</h2>
             <small className="text-center pt-3 ml-2">
-              ({tarefas.filter((t) => t.status === "realizada").length})
+              ({tarefasFiltradas.filter((t) => t.status === "realizada").length})
             </small>
           </div>
           <div className="max-h-[60vh] overflow-y-auto">
