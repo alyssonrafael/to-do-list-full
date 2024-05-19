@@ -21,6 +21,13 @@ type CardDeTarefaProps = Tarefa & {
   onApagarTarefa: (id: number) => void;
 };
 
+function criarDataLocal(diaString: string) {
+  const [ano, mes, dia] = diaString.split('T')[0].split('-').map(Number);
+  // Cria a data no fuso horário local
+  const dataLocal = new Date(ano, mes - 1, dia);
+  return dataLocal;
+}
+
 // Componente CardTarefa
 const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
   id,
@@ -33,6 +40,12 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
   onMoverParaNaoRealizada,
   onApagarTarefa,
 }) => {
+
+  const data = criarDataLocal(dia);
+  // Formata a data no formato desejado (DD/MM/YYYY)
+  const dataFormatada = data.toLocaleDateString('pt-BR');
+
+
   // Renderização do card com as informações da tarefa
   return (
     // container principal
@@ -64,7 +77,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
               status === "realizada" ? "line-through" : ""
             }`}
           >
-            {new Date(dia).toLocaleDateString()}
+            {dataFormatada}
           </small>
         </div>
       </div>
