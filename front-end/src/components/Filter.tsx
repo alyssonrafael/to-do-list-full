@@ -6,16 +6,20 @@ interface Categoria {
   id: number;
   nome: string;
 }
+
 // Define as propriedades esperadas pelo componente Filter
 interface FilterProps {
   onCategoriaChange: (categoriaId: number | null) => void;
 }
+
 // Componente funcional Filter
 function Filter({ onCategoriaChange }: FilterProps) {
   // Estado para controlar a abertura e fechamento do menu suspenso
   const [isOpen, setIsOpen] = useState(false);
   // Estado para armazenar a lista de categorias recuperadas da API
   const [categorias, setCategorias] = useState<Categoria[]>([]);
+  // Estado para armazenar a categoria ativa
+  const [categoriaAtiva, setCategoriaAtiva] = useState<number | null>(null);
 
   // Efeito para buscar as categorias da API quando o componente é montado
   useEffect(() => {
@@ -35,9 +39,17 @@ function Filter({ onCategoriaChange }: FilterProps) {
 
     fetchCategorias();
   }, []);
+
   // Função para alternar o estado do menu suspenso
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  // Função para lidar com a mudança de categoria
+  const handleCategoriaChange = (categoriaId: number | null) => {
+    setCategoriaAtiva(categoriaId);
+    onCategoriaChange(categoriaId);
+    toggleDropdown();
   };
 
   return (
@@ -46,7 +58,7 @@ function Filter({ onCategoriaChange }: FilterProps) {
       <button
         type="button"
         onClick={toggleDropdown}
-        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-300 ease-in-out focus:outline-none focus:border-gray-500"
       >
         <FaFilter />
       </button>
@@ -64,12 +76,12 @@ function Filter({ onCategoriaChange }: FilterProps) {
               <button
                 key={categoria.id}
                 // Quando uma categoria é clicada, chama a função onCategoriaChange com o ID da categoria
-                onClick={() => {
-                  onCategoriaChange(categoria.id);
-                  // Fecha o menu suspenso após a seleção de uma categoria
-                  toggleDropdown();
-                }}
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+                onClick={() => handleCategoriaChange(categoria.id)}
+                className={`block px-4 py-2 text-sm w-full text-left ${
+                  categoriaAtiva === categoria.id
+                    ? "bg-gray-200 text-gray-900"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                }`}
                 role="menuitem"
               >
                 {categoria.nome}
@@ -78,11 +90,12 @@ function Filter({ onCategoriaChange }: FilterProps) {
             {/* Botão para mostrar todas as categorias */}
             <button
               // Quando "Todas as Categorias" é clicado, chama a função onCategoriaChange com null
-              onClick={() => {
-                onCategoriaChange(null);
-                toggleDropdown();
-              }}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left"
+              onClick={() => handleCategoriaChange(null)}
+              className={`block px-4 py-2 text-sm w-full text-left ${
+                categoriaAtiva === null
+                  ? "bg-gray-200 text-gray-900"
+                  : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              }`}
               role="menuitem"
             >
               Todas as Categorias

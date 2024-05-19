@@ -16,10 +16,11 @@ type Tarefa = {
 // Define as propriedades esperadas pelo componente TabelaDeTarefas
 interface TabelaDeTarefasProps {
   categoriaSelecionada: number | null;
+  searchText: string;
 }
 
 // Componente funcional TabelaDeTarefas
-const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada }) => {
+const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada, searchText  }) => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]); // Estado para armazenar a lista de tarefas
 
   // Função para alternar o status da tarefa para 'realizada'
@@ -145,16 +146,21 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada 
     }
   };
 
-  // Efeito para buscar as tarefas quando o componente é montado ou quando a categoria selecionada muda
+  // Efeito para buscar as tarefas quando o componente é montado
   useEffect(() => {
     fetchTarefas();
-  }, [categoriaSelecionada]);
+  }, []);
 
-    // Filtrar tarefas com base na categoria selecionada e usar esse tarefas filtradas na rederizaçao dos meus cards
-    const tarefasFiltradas = categoriaSelecionada
-    ? tarefas.filter(tarefa => tarefa.categoriaId === categoriaSelecionada)
-    : tarefas;
-
+  // Filtra as tarefas com base na categoria selecionada e no texto de busca
+  const tarefasFiltradas = tarefas
+  .filter((tarefa) =>
+    categoriaSelecionada ? tarefa.categoriaId === categoriaSelecionada : true
+  )
+  .filter((tarefa) =>
+    tarefa.descricao.toLowerCase().includes(searchText.toLowerCase())
+  );
+    
+    
   return (
     <div className="col-span-3">
       <div className="grid grid-cols-3 gap-4">
