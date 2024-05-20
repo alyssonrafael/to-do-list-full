@@ -19,16 +19,6 @@ function Navbar() {
         </li>
         <li>
           <NavLink
-            to="/tarefa-do-dia"
-            className={({ isActive }) =>
-              isActive ? "underline text-green-500 text-2xl" : "no-underline"
-            }
-          >
-            Tarefa do dia
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="/nova-tarefa"
             className={({ isActive }) =>
               isActive ? "underline text-green-500 text-2xl " : "no-underline"
@@ -39,12 +29,42 @@ function Navbar() {
         </li>
         <li>
           <NavLink
+            to="/nova-categoria"
+            className={({ isActive }) =>
+              isActive ? "underline text-green-500 text-2xl" : "no-underline"
+            }
+          >
+            Nova Categoria
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/tarefa-do-dia"
+            className={({ isActive }) =>
+              isActive ? "underline text-green-500 text-2xl" : "no-underline"
+            }
+          >
+            Tarefa do dia
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/todas-as-tarefas"
             className={({ isActive }) =>
               isActive ? "underline text-green-500 text-2xl" : "no-underline"
             }
           >
             Todas as Tarefas
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/calendario"
+            className={({ isActive }) =>
+              isActive ? "underline text-green-500 text-2xl" : "no-underline"
+            }
+          >
+            Calendario
           </NavLink>
         </li>
         <li>
