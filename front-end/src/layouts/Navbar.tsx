@@ -34,7 +34,7 @@ function Navbar() {
               isActive ? "underline text-green-500 text-2xl" : "no-underline"
             }
           >
-            Nova Categoria
+            Categorias
           </NavLink>
         </li>
         <li>
