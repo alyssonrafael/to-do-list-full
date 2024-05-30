@@ -1,0 +1,48 @@
+/* Estilos para o modal */
+.modal {
+  position: fixed; /* Define a posição fixa */
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  right: auto;
+  bottom: auto;
+  transform: translate(-50%, -50%); /* Centraliza usando transformação */
+  background: white; /* Fundo branco */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 8px; /* Cantos arredondados */
+  outline: none; /* Remove a borda ao focar */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Sombra */
+}
+
+/* Sobreposição do modal */
+.modal-overlay {
+  position: fixed; /* Define a posição fixa */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+}
+
+/* Estilos para o botão de fechar */
+.btn-close {
+  background: #e53e3e; /* Cor de fundo vermelha */
+  color: white; /* Texto branco */
+  padding: 10px; /* Espaçamento interno */
+  border: none; /* Remove a borda */
+  border-radius: 4px; /* Cantos arredondados */
+  cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Estilos para eventos com mais tarefas */
+.event-with-more-tasks {
+  background-color: #f5f5f5; /* Fundo cinza claro */
+  border: 1px solid #ccc; /* Borda cinza */
+  color: #333; /* Texto escuro */
+  cursor: pointer; /* Cursor de ponteiro */
+}
+
+/* Sobrescreve o estilo para eventos com mais tarefas */
+.event-with-more-tasks {
+  background-color: rgba(49, 116, 173, 0.6) !important; /* Fundo azul semitransparente */
+  color: white; /* Texto branco */
+}
