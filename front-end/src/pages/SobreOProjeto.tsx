@@ -75,12 +75,11 @@ function SobreOProjeto() {
           <h2 className="text-lg font-semibold my-4">
             Padrão de cores do Projeto
           </h2>
-          {/* Renderiza blocos de cores */}
           <div className="flex justify-center space-x-6">
-            <Cores color="bg-green-500" label="#22C55E" />
-            <Cores color="bg-yellow-500" label="#FFDE59" />
-            <Cores color="bg-red-500" label="#E4080A" />
-            <Cores color="bg-black" label="#000000" />
+            <Cores color="bg-green-500/50 hover:bg-green-500" label="#22C55E" />
+            <Cores color="bg-yellow-300/50 hover:bg-yellow-400" label="#FFDE59" />
+            <Cores color="bg-red-400/50 hover:bg-red-500" label="#E4080A" />
+            <Cores color="bg-black/50 hover:bg-black" label="#000000" />
           </div>
         </section>
         <section className="my-8">

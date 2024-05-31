@@ -6,7 +6,7 @@ interface CoresProps {
 // Componente funcional para exibir dos quadrados das cores do projeto 
 const Cores: React.FC<CoresProps> = ({ color, label }) => {
     return (
-      <div className={`relative w-24 h-24 ${color}/60 flex justify-center items-center rounded-br-xl rounded-tl-xl rounded-tr-sm rounded-bl-sm transition duration-300 ease-in-out hover:${color}`}>
+      <div className={`relative w-24 h-24 ${color} flex justify-center items-center rounded-br-xl rounded-tl-xl rounded-tr-sm rounded-bl-sm duration-200 hover:scale-125`}>
         <p className="text-white">{label}</p>
       </div>
     );
