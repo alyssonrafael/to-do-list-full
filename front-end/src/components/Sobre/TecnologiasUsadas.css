@@ -1,0 +1,70 @@
+/* Estilos para a seção de tecnologias */
+.technologies-section {
+    opacity: 0;  /* Inicialmente, a seção está invisível */
+    transform: translateY(50px); /* Deslocamento vertical para cima */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Transições suaves */
+  }
+
+  /* Quando a classe .visible é aplicada, a seção fica visível */
+  .technologies-section.visible {
+    opacity: 1;
+    transform: translateY(0); /* Volta à posição original */
+  }
+  
+  /* Estilos para cada item de tecnologia */
+  .tech-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;  /* Efeito de escala suave ao passar o mouse */
+  }
+
+  /* Quando o mouse está sobre o item, aumenta a escala */
+  .tech-item:hover {
+    transform: scale(1.1);
+  }
+  /* Estilos para os ícones de tecnologia */
+  .tech-icon {
+    font-size: 3rem;
+  }
+  /* Cores específicas para cada tecnologia */
+  .text-react {
+    color: #61dafb;
+  }
+  
+  .text-tailwindcss {
+    color: #38b2ac;
+  }
+  
+  .text-typescript {
+    color: #3178c6;
+  }
+  
+  .text-css3 {
+    color: #264de4;
+  }
+  
+  .text-vite {
+    color: #646cff;
+  }
+  
+  .text-nodejs {
+    color: #83cd29;
+  }
+  
+  .text-postgresql {
+    color: #336791;
+  }
+  
+  .text-prisma {
+    color: #2d3748;
+  }
+  
+  .text-express {
+    color: #000000;
+  }
+  
+  .text-docker {
+    color: #2496ed;
+  }
+  
