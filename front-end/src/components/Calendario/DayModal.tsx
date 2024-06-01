@@ -51,27 +51,27 @@ const DayModal: FunctionComponent<DayModalProps> = ({ isOpen, tarefas, categoria
   //retorno do modal com as informações de cada tarefa 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full max-h-[60vh] overflow-y-auto relative">
+      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full max-h-[60vh] overflow-y-auto relative m-3 md:m-0">
         <h2 className="text-xl font-semibold mb-4">Tarefas do dia</h2>
         <div className="relative">
           {tarefas.map((tarefa) => (
             <div key={tarefa.id} className="mb-4 space-y-1">
-              <h3 className="text-lg font-semibold text">
+              <h3 className="text-lg font-semibold">
                 {tarefa.descricao.toLocaleUpperCase()}
               </h3>
               <p>
                 <strong>Data:</strong> {format(addDays(tarefa.dia, 1), "dd/MM/yyyy")}
               </p>
-              <p className="flex items-center text-center space-x-4">
+              <div className="flex items-center space-x-4">
                 <p><strong>Status: </strong> {getTextoDaTarefa(tarefa)}</p>
                 <span className="text-xl">
                   <FaCircle style={{ color: tarefa.cor }} />
                 </span>
-              </p>
+              </div>
               <p>
                 <strong>Categoria:</strong> {getNomeCategoria(tarefa.categoriaId)}
               </p>
-              -----------------------------------------
+              <hr />
             </div>
           ))}
           <div className="sticky bottom-0 z-10 text-right">

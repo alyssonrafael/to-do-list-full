@@ -22,8 +22,13 @@ const Home: React.FC = () => {
   return (
     <BaseLayout>
       <Navbar />
-      <div className="row-span-1 col-span-3 flex justify-between items-end py-12">
-        <h1 className="text-2xl font-medium">Essa é sua To-do-List</h1>
+      {/* divisão para responsividade */}
+      <div className="
+      col-span-3 py-6
+      md:text-center md:flex md:justify-between
+      lg:row-span-1 lg:col-span-3 lg:flex lg:justify-between lg:items-end lg:py-12
+      ">
+        <h1 className="text-2xl font-medium pb-3 md:pb-0 ">Essa é sua To-do-List</h1>
         <div className="flex items-center space-x-4 text-lg mr-4">
           {/* Renderiza o componente Filter e passa a função de lidar com a mudança de categoria como prop */}
           <Filter onCategoriaChange={handleCategoriaChange} />

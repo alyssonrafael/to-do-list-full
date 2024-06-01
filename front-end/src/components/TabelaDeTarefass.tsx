@@ -163,7 +163,12 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
     
   return (
     <div className="col-span-3">
-      <div className="grid grid-cols-3 gap-4">
+      {/* configuraçoes para responsividade */}
+      <div className="
+      space-y-3 pb-4 
+      md:grid md:grid-cols-3 md:gap-4 md:pb-0 md:space-y-0 
+      "
+      >
         {/* Coluna para tarefas não iniciadas */}
         <div className="border border-red-500">
           <div className="flex justify-center">
@@ -172,7 +177,7 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
               ({tarefasFiltradas.filter((t) => t.status === "não iniciado").length})
             </small>
           </div>
-          <div className="max-h-[60vh] overflow-y-auto ">
+          <div className="md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto ">
           {tarefasFiltradas
               .filter((t) => t.status === "não iniciado")
               .map((tarefa) => (
@@ -195,7 +200,7 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
               ({tarefasFiltradas.filter((t) => t.status === "emProgresso").length})
             </small>
           </div>
-          <div className="max-h-[60vh] overflow-y-auto">
+          <div className="md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto">
           {tarefasFiltradas
               .filter((t) => t.status === "emProgresso")
               .map((tarefa) => (
@@ -219,7 +224,7 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
               ({tarefasFiltradas.filter((t) => t.status === "realizada").length})
             </small>
           </div>
-          <div className="max-h-[60vh] overflow-y-auto">
+          <div className="md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto">
           {tarefasFiltradas
               .filter((t) => t.status === "realizada")
               .map((tarefa) => (

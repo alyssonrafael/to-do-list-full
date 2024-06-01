@@ -26,10 +26,9 @@ function TodasAsTarefas() {
   return (
     <BaseLayout>
     <Navbar/>
-    <div className="row-span-1 col-span-3 flex justify-between items-end py-12">
+    <div className="row-span-1 col-span-3 flex py-12 flex-col lg:flex-row lg:justify-between">
         <h1 className="text-2xl font-medium">Todas as suas tarefas estão aqui</h1>
         <div className="flex items-center space-x-4 text-lg mr-4">
-          {/* Renderiza o componente Filter e passa a função de lidar com a mudança de categoria como prop */}
           <Filter onCategoriaChange={handleCategoriaChange} />
           <Search onSearchTextChange={handleSearchTextChange} />
         </div>

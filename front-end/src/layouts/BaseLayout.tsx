@@ -8,13 +8,19 @@ type BaseLayoutProps = {
 
 const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <main className="mx-auto max-w-screen-lg pt-10"> {/* Adicionando mx-auto e my-4 */}
-      <div className="grid grid-cols-4 auto-rows-auto gap-4 max-h-screen overflow-hidden">
+    <>
+      {/* adicionando configuraçoes para responsividade */}
+      <main className="mx-auto max-w-screen-lg pt-10">
+      <div
+       className="
+          grid auto-cols-auto auto-rows-auto gap-4 max-h-screen mx-6
+          md:grid md:grid-cols-2 md:auto-rows md:gap-4 md:max-h-screen md:mx-6
+          lg:grid lg:grid-cols-4 lg:auto-rows-auto lg:gap-4 lg:max-h-screen lg:overflow-hidden
+        ">
           {children}
         </div>
-      </main>
-    </div>
+      </main> 
+    </>
   );
 };
 

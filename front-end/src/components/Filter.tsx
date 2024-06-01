@@ -53,7 +53,7 @@ function Filter({ onCategoriaChange }: FilterProps) {
   };
 
   return (
-    <div className="relative inline-block text-left z-10">
+    <div className="relative inline-block text-left z-10 ">
       {/* Botão de filtro que abre o menu suspenso */}
       <button
         type="button"
@@ -62,11 +62,15 @@ function Filter({ onCategoriaChange }: FilterProps) {
       >
         <FaFilter />
       </button>
-      {/* Renderiza o menu suspenso quando isOpen é verdadeiro */}
+      {/* Renderiza o menu suspenso quando isOpen é verdadeiro e configuraço para responsividade */}
       {isOpen && (
-        <div className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+        <div className="
+        absolute mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 origin-top-right w-40
+        md:w-48
+        lg:w-56  "
+        >
           <div
-            className="py-1"
+            className="py-1 max-h-40 overflow-y-auto" //limitar tamanho do select
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="options-menu"

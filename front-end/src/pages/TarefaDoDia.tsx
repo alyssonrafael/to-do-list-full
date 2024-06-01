@@ -37,7 +37,7 @@ const TarefaDoDia: React.FC = () => {
     <BaseLayout>
       <Navbar />
       {/* Cabeçalho com título e data atual */}
-      <div className="row-span-1 col-span-3 flex justify-between items-end py-12">
+      <div className="row-span-1 col-span-3 flex py-12 flex-col  lg:block">
         <h1 className="text-2xl font-medium">
           Tarefas do dia
           {/* Exibe a data atual formatada */}

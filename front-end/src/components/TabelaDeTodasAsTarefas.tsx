@@ -110,7 +110,7 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
           )
         </small>
       </div>
-      <div className="grid grid-cols-1 max-h-[60vh] overflow-y-auto">
+      <div className="grid grid-cols-1 md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto">
         {/* Exibe as tarefas filtradas */}
         {tarefasOrdenadas.map((tarefa) => (
           <CardParaExibicaoGeral

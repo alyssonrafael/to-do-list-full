@@ -7,10 +7,10 @@ function Motivacao() {
             <h2 className="text-xl font-semibold my-2 text-center">
               Motivação, Desafios e Lições Aprendidas
             </h2>
-            <ul className=" grid grid-cols-3 mt-5">
+            <ul className="space-y-4 mt-5">
               <li>
                 <h4 className="font-semibold text-center"> A Motivação 💪</h4>
-                <ul className="text-sm space-y-2 text-left list-disc ml-6 mt-3">
+                <ul className="space-y-2 text-left list-disc ml-6 mt-3">
                   <li>
                     Inicialmente para criar essa aplicação foi aprimorar minhas
                     habilidades em programação fullstack. Queria trabalhar tanto
@@ -33,7 +33,7 @@ function Motivacao() {
 
               <li>
                 <h4 className="font-semibold text-center">Os Desafios 🚀</h4>
-                <ul className="text-sm space-y-2 text-left list-disc ml-6 mt-3">
+                <ul className="space-y-2 text-left list-disc ml-6 mt-3">
                   <li>
                     Datas e Tipagem em TypeScript : Dominar as nuances das datas
                     e da tipagem em TypeScript foi um obstáculo inicial. No
@@ -56,7 +56,7 @@ function Motivacao() {
 
               <li>
                 <h4 className="font-semibold text-center">Lições Aprendidas 🌟</h4>
-                <ul className="text-sm space-y-2 text-left list-disc ml-6 mt-3">
+                <ul className="space-y-2 text-left list-disc ml-6 mt-3">
                   <li>
                     Me aprofundei nos conhecimentos em React. Entendi como criar
                     componentes reutilizáveis, gerenciar estados locais e lidar

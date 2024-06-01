@@ -32,17 +32,3 @@
   border-radius: 4px; /* Cantos arredondados */
   cursor: pointer; /* Cursor de ponteiro */
 }
-
-/* Estilos para eventos com mais tarefas */
-.event-with-more-tasks {
-  background-color: #f5f5f5; /* Fundo cinza claro */
-  border: 1px solid #ccc; /* Borda cinza */
-  color: #333; /* Texto escuro */
-  cursor: pointer; /* Cursor de ponteiro */
-}
-
-/* Sobrescreve o estilo para eventos com mais tarefas */
-.event-with-more-tasks {
-  background-color: rgba(49, 116, 173, 0.6) !important; /* Fundo azul semitransparente */
-  color: white; /* Texto branco */
-}

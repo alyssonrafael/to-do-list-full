@@ -21,7 +21,7 @@ const CategoriaForm: React.FC<CategoriaFormProps> = ({
   // Renderização do componente.
   return (
     // Container principal do formulário com estilização para layout e sombra.
-    <div className="row-span-2 col-span-1 p-4 bg-white rounded-lg shadow-md">
+    <div className="row-span-2 col-span-3 md:col-span-1 p-4 bg-white rounded-lg shadow-md">
       {/* // Título do formulário. */}
       <h2 className="text-xl font-semibold mb-4">Criar Nova Categoria</h2>
       {/* // Formulário com evento de envio ligado à função handleSubmit. */}
@@ -36,6 +36,7 @@ const CategoriaForm: React.FC<CategoriaFormProps> = ({
           </label>
           <input
             type="text"
+            placeholder="Nome da nova categoria"
             id="nome"
             name="nome"
             value={nomeCategoria}

@@ -60,10 +60,10 @@ function SobreOProjeto() {
   return (
     <BaseLayout>
       <Navbar />
-      <h1 className="text-3xl font-semibold col-span-3 text-center">
+      <div className="row-span-3 col-span-3 justify-between items-end p-6 max-h-[80vh] md:max-h-[65vh] overflow-y-auto">
+      <h1 className="text-xl md:text-3xl font-semibold col-span-3 text-center">
         Sobre o Projeto To-Do List
       </h1>
-      <div className="row-span-3 col-span-3 justify-between items-end p-6 max-h-[65vh] overflow-y-auto">
         {/* Renderiza outros componentes */}
         <Funcionalidades />
         <Motivacao />
@@ -75,11 +75,12 @@ function SobreOProjeto() {
           <h2 className="text-lg font-semibold my-4">
             Padrão de cores do Projeto
           </h2>
-          <div className="flex justify-center space-x-6">
-            <Cores color="bg-green-500/50 hover:bg-green-500" label="#22C55E" />
-            <Cores color="bg-yellow-300/50 hover:bg-yellow-400" label="#FFDE59" />
-            <Cores color="bg-red-400/50 hover:bg-red-500" label="#E4080A" />
-            <Cores color="bg-black/50 hover:bg-black" label="#000000" />
+          {/* hover apenas em dispositivos grandes */}
+          <div className="flex justify-center flex-wrap  md:space-x-6">
+            <Cores color="bg-green-500 lg:bg-green-500/50 lg:hover:bg-green-500" label="#22C55E" />
+            <Cores color="bg-yellow-500 lg:bg-yellow-500/50 lg:hover:bg-yellow-500" label="#FFDE59" />
+            <Cores color="bg-red-500 lg:bg-red-500/50 lg:hover:bg-red-500" label="#E4080A" />
+            <Cores color="bg-black lg:bg-black/50 lg:hover:bg-black" label="#000000" />
           </div>
         </section>
         <section className="my-8">

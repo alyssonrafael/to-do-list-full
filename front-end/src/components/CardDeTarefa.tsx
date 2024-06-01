@@ -1,5 +1,7 @@
 import React from "react";
 import { FaArrowRight, FaArrowLeft, FaCheck, FaTrash } from "react-icons/fa6";
+import useWindowWidth from '../components/hooks/useWindowWidth';
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 // Definição do tipo para a tarefa
 type Tarefa = {
@@ -44,7 +46,12 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
   const data = criarDataLocal(dia);
   // Formata a data no formato desejado (DD/MM/YYYY)
   const dataFormatada = data.toLocaleDateString('pt-BR');
+  // usando hook para obter o tamanho da tela para mudar os icones a serem exibidos
+  const windowWidth = useWindowWidth(); 
 
+  // Função para escolher a seta correta com base no tamanho da tela
+  const ArrowRight = windowWidth < 768 ? FaArrowDown : FaArrowRight;
+  const ArrowLeft = windowWidth < 768 ? FaArrowUp : FaArrowLeft;
 
   // Renderização do card com as informações da tarefa
   return (
@@ -59,8 +66,10 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
           <button
             onClick={() => onMoverParaNaoRealizada(id)}
             className="mr-4 text-red-500 hover:text-red-700"
+            // titulo para dizer oque a setinha faz
+            title="Mover para Não Realizada" 
           >
-            <FaArrowLeft />
+            <ArrowLeft />
           </button>
         )}
         {/* Descrição da tarefa, com texto e data riscado se a tarefa está 'realizada' */}
@@ -87,8 +96,9 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
           <button
             onClick={() => onMoverParaProgresso(id)}
             className="ml-4 text-yellow-500 hover:text-yellow-700"
+            title="Mover para Em Progresso"
           >
-            <FaArrowRight />
+            <ArrowRight />
           </button>
         )}
         {/* Botão para marcar a tarefa como 'realizada', visível apenas quando o status é 'emProgresso' */}
@@ -97,6 +107,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
             <button
               onClick={() => onToggleRealizada(id)}
               className="ml-4 text-green-500 hover:text-green-700"
+              title="Mover Finalizada"
             >
               <FaCheck />
             </button>
@@ -105,18 +116,20 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
         {/* Botão para mover a tarefa para 'emProgresso', visível apenas quando o status é 'realizada' */}
         {status === "realizada" && (
           <>
-          <button
-            onClick={() => onMoverParaProgresso(id)}
-            className="ml-4 text-yellow-500 hover:text-yellow-700"
-          >
-            <FaArrowLeft />
-          </button>
-          <button
-          onClick={()=> onApagarTarefa(id)}
-          className="ml-4 text-red-500 hover:text-red-700"
-          >
-            <FaTrash/>
-          </button>
+            <button
+              onClick={() => onMoverParaProgresso(id)}
+              className="ml-4 text-yellow-500 hover:text-yellow-700"
+              title="Mover para Em Progresso"
+            >
+              <ArrowLeft />
+            </button>
+            <button
+              onClick={() => onApagarTarefa(id)}
+              className="ml-4 text-red-500 hover:text-red-700"
+              title="Excluir Tarefa"
+            >
+              <FaTrash />
+            </button>
           </>
         )}
       </div>
