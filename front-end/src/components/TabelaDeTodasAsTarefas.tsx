@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardParaExibicaoGeral from "./CardParaExibicaoGeral";
+import MensagemCard from "./Message";
 
 // Define o tipo de uma tarefa
 type Tarefa = {
@@ -26,8 +27,17 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
 }) => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]); // Estado para armazenar a lista de tarefas
 
+  const [mensagem, setMensagem] = useState({ sucesso: false, texto: "" });
+  //esse estado força a atualizaçao da mensagem quando ouver interaçao com o botao
+  const [mensagemCount, setMensagemCount] = useState(0);
+
   // Função para apagar tarefa
   const onApagarTarefa = async (id: number) => {
+    // Redefina a mensagem
+    setMensagem({ sucesso: false, texto: "" });
+    // Incrementa o contador de mensagens forçando ela a aparecer
+    setMensagemCount(mensagemCount + 1);
+
     try {
       const response = await fetch(`http://localhost:3333/api/tasks/${id}`, {
         method: "DELETE",
@@ -39,8 +49,10 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
 
       // Remove a tarefa da lista após a exclusão bem-sucedida
       setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+      setMensagem({ sucesso: true, texto: "Tarefa Excluida com sucesso" });
     } catch (error) {
       console.error("Erro ao apagar a tarefa:", error);
+      setMensagem({ sucesso: false, texto: "Erro ao excluir tarefa tente novamente mais tarde " });
     }
   };
 
@@ -95,7 +107,7 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
   return (
     <div className="col-span-3">
       <div className="flex pb-2 space-x-2">
-        <p>Total de todas as tarefas:</p>  
+        <p>Total de todas as tarefas:</p>
         {/* todas as tarefas independente de status*/}
         <small className=" text-green-600">
           (
@@ -120,6 +132,11 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
           />
         ))}
       </div>
+      <MensagemCard
+        sucesso={mensagem.sucesso}
+        mensagem={mensagem.texto}
+        key={mensagemCount}
+      />
     </div>
   );
 };

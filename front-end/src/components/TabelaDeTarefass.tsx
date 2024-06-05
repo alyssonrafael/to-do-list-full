@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import CardDeTarefa from "./CardDeTarefa";
+import MensagemCard from "../components/Message";
 
 // Define o tipo de uma tarefa
 type Tarefa = {
@@ -17,15 +18,28 @@ type Tarefa = {
 interface TabelaDeTarefasProps {
   categoriaSelecionada: number | null;
   searchText: string;
-  dataAtual?: string; 
+  dataAtual?: string;
 }
 
 // Componente funcional TabelaDeTarefas
-const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada, searchText, dataAtual }) => {
+const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({
+  categoriaSelecionada,
+  searchText,
+  dataAtual,
+}) => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]); // Estado para armazenar a lista de tarefas
+
+  const [mensagem, setMensagem] = useState({ sucesso: false, texto: "" });
+  //esse estado força a atualizaçao da mensagem quando ouver interaçao com o botao
+  const [mensagemCount, setMensagemCount] = useState(0);
 
   // Função para alternar o status da tarefa para 'realizada'
   const onToggleRealizada = async (id: number) => {
+    // Redefina a mensagem
+    setMensagem({ sucesso: false, texto: "" });
+    // Incrementa o contador de mensagens forçando ela a aparecer
+    setMensagemCount(mensagemCount + 1);
+
     const descricaoAtual = tarefas.find(
       (tarefa) => tarefa.id === id
     )?.descricao;
@@ -49,13 +63,22 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada,
 
         // Atualiza a lista de tarefas após a atualização bem-sucedida
         await fetchTarefas();
+        setMensagem({ sucesso: true, texto: "Tarefa realizada com sucesso" });
       } catch (error) {
         console.error("Erro ao atualizar a tarefa:", error);
+        setMensagem({
+          sucesso: false,
+          texto: "erro ao mover tarefa tente mais tarde",
+        });
       }
     }
   };
   // Função para alternar o status da tarefa para 'emProgresso'
   const onMoverParaProgresso = async (id: number) => {
+    // Redefina a mensagem
+    setMensagem({ sucesso: false, texto: "" });
+    // Incrementa o contador de mensagens forçando ela a aparecer
+    setMensagemCount(mensagemCount + 1);
     // A descrição permanece a mesma, apenas o status e a cor são atualizados
     const descricaoAtual = tarefas.find(
       (tarefa) => tarefa.id === id
@@ -80,13 +103,25 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada,
 
         // Atualiza a lista de tarefas após a atualização bem-sucedida
         await fetchTarefas();
+        setMensagem({
+          sucesso: true,
+          texto: "Tarefa movida para em progresso",
+        });
       } catch (error) {
         console.error("Erro ao atualizar a tarefa:", error);
+        setMensagem({
+          sucesso: false,
+          texto: "erro ao mover tarefa tente mais tarde",
+        });
       }
     }
   };
   // Função para alternar o status da tarefa para 'não iniciado'
   const onMoverParaNaoRealizada = async (id: number) => {
+    // Redefina a mensagem
+    setMensagem({ sucesso: false, texto: "" });
+    // Incrementa o contador de mensagens forçando ela a aparecer
+    setMensagemCount(mensagemCount + 1);
     const descricaoAtual = tarefas.find(
       (tarefa) => tarefa.id === id
     )?.descricao;
@@ -110,26 +145,43 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada,
 
         // Atualiza a lista de tarefas após a atualização bem-sucedida
         await fetchTarefas();
+        setMensagem({
+          sucesso: true,
+          texto: "Tarefa movida para Não realizada",
+        });
       } catch (error) {
         console.error("Erro ao atualizar a tarefa:", error);
+        setMensagem({
+          sucesso: false,
+          texto: "erro ao mover tarefa tente mais tarde",
+        });
       }
     }
   };
   // Função para apagar tarefa
   const onApagarTarefa = async (id: number) => {
+    // Redefina a mensagem
+    setMensagem({ sucesso: false, texto: "" });
+    // Incrementa o contador de mensagens forçando ela a aparecer
+    setMensagemCount(mensagemCount + 1);
     try {
       const response = await fetch(`http://localhost:3333/api/tasks/${id}`, {
         method: "DELETE",
       });
-  
+
       if (!response.ok) {
         throw new Error("Problema ao apagar a tarefa");
       }
-  
+
       // Remove a tarefa da lista após a exclusão bem-sucedida
-      setTarefas(tarefas.filter(tarefa => tarefa.id !== id));
+      setTarefas(tarefas.filter((tarefa) => tarefa.id !== id));
+      setMensagem({ sucesso: true, texto: "Tarefa excluida com sucesso" });
     } catch (error) {
       console.error("Erro ao apagar a tarefa:", error);
+      setMensagem({
+        sucesso: false,
+        texto: "erro ao excluir tarefa tente mais tarde",
+      });
     }
   };
 
@@ -152,19 +204,23 @@ const TabelaDeTarefas: React.FC<TabelaDeTarefasProps> = ({ categoriaSelecionada,
     fetchTarefas();
   }, []);
 
-// Filtra as tarefas com base na categoria, texto de busca e data se necessario (vou usar a data na pagina tarefa do dia)
-const tarefasFiltradas = tarefas.filter((tarefa) => {
-  const categoriaMatch = categoriaSelecionada ? tarefa.categoriaId === categoriaSelecionada : true;
-  const searchMatch = tarefa.descricao.toLowerCase().includes(searchText.toLowerCase());
-  const dataMatch = dataAtual ? tarefa.dia === dataAtual : true;
-  return categoriaMatch && searchMatch && dataMatch;
-});
-    
-    
+  // Filtra as tarefas com base na categoria, texto de busca e data se necessario (vou usar a data na pagina tarefa do dia)
+  const tarefasFiltradas = tarefas.filter((tarefa) => {
+    const categoriaMatch = categoriaSelecionada
+      ? tarefa.categoriaId === categoriaSelecionada
+      : true;
+    const searchMatch = tarefa.descricao
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
+    const dataMatch = dataAtual ? tarefa.dia === dataAtual : true;
+    return categoriaMatch && searchMatch && dataMatch;
+  });
+
   return (
     <div className="col-span-3">
       {/* configuraçoes para responsividade */}
-      <div className="
+      <div
+        className="
       space-y-3 pb-4 
       md:grid md:grid-cols-3 md:gap-4 md:pb-0 md:space-y-0 
       "
@@ -174,11 +230,16 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
           <div className="flex justify-center">
             <h2 className="text-center text-2xl pt-3">Não Realizadas </h2>
             <small className="text-center pt-3 ml-2">
-              ({tarefasFiltradas.filter((t) => t.status === "não iniciado").length})
+              (
+              {
+                tarefasFiltradas.filter((t) => t.status === "não iniciado")
+                  .length
+              }
+              )
             </small>
           </div>
           <div className="md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto ">
-          {tarefasFiltradas
+            {tarefasFiltradas
               .filter((t) => t.status === "não iniciado")
               .map((tarefa) => (
                 <CardDeTarefa
@@ -197,11 +258,16 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
           <div className="flex justify-center">
             <h2 className="text-center text-2xl pt-3">Em Progesso </h2>
             <small className="text-center pt-3 ml-2">
-              ({tarefasFiltradas.filter((t) => t.status === "emProgresso").length})
+              (
+              {
+                tarefasFiltradas.filter((t) => t.status === "emProgresso")
+                  .length
+              }
+              )
             </small>
           </div>
           <div className="md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto">
-          {tarefasFiltradas
+            {tarefasFiltradas
               .filter((t) => t.status === "emProgresso")
               .map((tarefa) => (
                 <CardDeTarefa
@@ -221,11 +287,12 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
           <div className="flex justify-center">
             <h2 className="text-center text-2xl pt-3">Finalizadas</h2>
             <small className="text-center pt-3 ml-2">
-              ({tarefasFiltradas.filter((t) => t.status === "realizada").length})
+              ({tarefasFiltradas.filter((t) => t.status === "realizada").length}
+              )
             </small>
           </div>
           <div className="md:max-h-[50vh] lg:max-h-[60vh] overflow-y-auto">
-          {tarefasFiltradas
+            {tarefasFiltradas
               .filter((t) => t.status === "realizada")
               .map((tarefa) => (
                 <CardDeTarefa
@@ -240,6 +307,11 @@ const tarefasFiltradas = tarefas.filter((tarefa) => {
           </div>
         </div>
       </div>
+      <MensagemCard
+        sucesso={mensagem.sucesso}
+        mensagem={mensagem.texto}
+        key={mensagemCount}
+      />
     </div>
   );
 };
