@@ -51,8 +51,8 @@ const DayModal: FunctionComponent<DayModalProps> = ({ isOpen, tarefas, categoria
   //retorno do modal com as informações de cada tarefa 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg max-w-md w-full max-h-[60vh] overflow-y-auto relative m-3 md:m-0">
-        <h2 className="text-xl font-semibold mb-4">Tarefas do dia</h2>
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg max-w-md w-full max-h-[60vh] overflow-y-auto relative m-3 md:m-0">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Tarefas do dia</h2>
         <div className="relative">
           {tarefas.map((tarefa) => (
             <div key={tarefa.id} className="mb-4 space-y-1">
@@ -71,7 +71,7 @@ const DayModal: FunctionComponent<DayModalProps> = ({ isOpen, tarefas, categoria
               <p>
                 <strong>Categoria:</strong> {getNomeCategoria(tarefa.categoriaId)}
               </p>
-              <hr />
+              <hr className="border-gray-300 dark:border-gray-700" />
             </div>
           ))}
           <div className="sticky bottom-0 z-10 text-right">

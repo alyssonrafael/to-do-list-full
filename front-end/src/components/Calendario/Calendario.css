@@ -1,34 +1,33 @@
-/* Estilos para o modal */
-.modal {
-  position: fixed; /* Define a posição fixa */
-  top: 50%; /* Centraliza verticalmente */
-  left: 50%; /* Centraliza horizontalmente */
-  right: auto;
-  bottom: auto;
-  transform: translate(-50%, -50%); /* Centraliza usando transformação */
-  background: white; /* Fundo branco */
-  padding: 20px; /* Espaçamento interno */
-  border-radius: 8px; /* Cantos arredondados */
-  outline: none; /* Remove a borda ao focar */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3); /* Sombra */
-}
-
-/* Sobreposição do modal */
-.modal-overlay {
-  position: fixed; /* Define a posição fixa */
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
-}
-
-/* Estilos para o botão de fechar */
-.btn-close {
-  background: #e53e3e; /* Cor de fundo vermelha */
-  color: white; /* Texto branco */
-  padding: 10px; /* Espaçamento interno */
-  border: none; /* Remove a borda */
-  border-radius: 4px; /* Cantos arredondados */
-  cursor: pointer; /* Cursor de ponteiro */
-}
+/* Estilos para o dia atual */
+.calendar .rbc-today {
+    background-color: transparent !important; 
+    border: solid 2px #04ff00 ;
+  }
+  .calendar .rbc-show-more {
+    color: #04ff00 !important;
+    background-color: transparent;
+  }
+  /* Estilos para os botões de navegação */
+  .calendar .rbc-toolbar button {
+    background-color: transparent; /* Fundo transparente */
+    border: 1px solid gray; /* Sem borda */
+    color: inherit; /* Herda a cor do texto atual */
+    padding: 5px 10px; /* Espaçamento interno */
+    cursor: pointer; /* Cursor de ponteiro */
+    transition: background-color 0.3s; /* Transição suave */
+  }
+  
+  .calendar .rbc-toolbar button:hover {
+    background-color: #cccccc; /* Cor de fundo ao passar o mouse */
+  }
+  
+  .calendar.rbc-toolbar button {
+    color: #cdcdcd; /* Texto preto no modo claro */
+  }
+  
+  /* Estilização para o popup */
+ .rbc-overlay {
+    background-color: #cdcdcd !important; /* Fundo branco no modo claro */
+    color: #222222 !important; /* Texto preto no modo claro */
+    border: 1px solid #dddddd; /* Borda clara */
+  }

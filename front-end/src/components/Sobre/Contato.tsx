@@ -43,12 +43,12 @@ function Contato() {
               <span>LinkedIn</span>
             </a>
           </li>
-          <li className="flex items-center space-x-2">
+          <li className="flex items-center space-x-2 ">
             <a
               href="https://github.com/alyssonrafael"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-800 flex items-center space-x-1"
+              className="text-gray-800  flex items-center space-x-1 dark:text-gray-100"
             >
               <FaGithub />
               <span>GitHub</span>

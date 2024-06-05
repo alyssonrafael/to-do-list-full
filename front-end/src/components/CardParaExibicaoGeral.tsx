@@ -55,22 +55,22 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
 
   return (
     <div
-      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white transition-transform transform hover:translate-y-[-5px] hover:shadow-xl`}
+      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white dark:bg-gray-800 transition-transform transform hover:translate-y-[-5px] hover:shadow-xl`}
       style={{ borderColor: cor }}
     >
       <div className="flex items-center">
         <div>
           {/* Exibe a descrição da tarefa */}
           <p
-            className={`text-gray-800 text-lg font-semibold ${
+            className={`text-gray-800 dark:text-gray-200 text-lg font-semibold ${
               status === "realizada" ? "line-through" : ""
             }`}
           >
             {descricao}
           </p>
-           {/* Exibe o nome da categoria */}
+          {/* Exibe o nome da categoria */}
           <p
-            className={`text-gray-800 text-sm font-semibold ${
+            className={`text-gray-600 dark:text-gray-400 text-sm font-semibold ${
               status === "realizada" ? "line-through" : ""
             }`}
           >
@@ -78,7 +78,7 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
           </p>
           {/* Exibe a data formatada */}
           <small
-            className={`text-gray-500 ${
+            className={`text-gray-500 dark:text-gray-400 ${
               status === "realizada" ? "line-through" : ""
             }`}
           >
@@ -86,7 +86,7 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
           </small>
         </div>
       </div>
-       {/* Botão para apagar a tarefa */}
+      {/* Botão para apagar a tarefa */}
       <div className="flex items-center">
         <button
           onClick={() => onApagarTarefa(id)}

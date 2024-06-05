@@ -5,8 +5,8 @@ function Calendario() {
   return (
     // o Base layout nao foi utilizado pois em telas pequenas o componente calendarioDia estava com um bug que nao permitia ele se ajustar a
     //telas pequenas como solução basicamente repliquei o Baselayout para telas grandes e ajustei o layout para telas pequenas
-    <div className="min-h-screen bg-gray-100">
-      <main className="mx-auto max-w-screen-lg pt-10">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-950 dark:text-white pt-10 lg:pt-24">
+      <main className="mx-auto max-w-screen-2xl">
         <div
           className="
         flex-col mx-6

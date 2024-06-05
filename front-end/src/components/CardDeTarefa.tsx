@@ -57,7 +57,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
   return (
     // container principal
     <div
-      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white transition-transform transform hover:translate-y-[-5px] hover:shadow-xl`}
+      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white dark:bg-gray-800 transition-transform transform hover:translate-y-[-5px] hover:shadow-xl`}
       style={{ borderColor: cor }} //define a cor de borda dinamicamente
     >
       {/* Botão para mover a tarefa para 'não realizada', visível apenas quando o status é 'emProgresso' */}
@@ -75,14 +75,14 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
         {/* Descrição da tarefa, com texto e data riscado se a tarefa está 'realizada' */}
         <div>
           <p
-            className={`text-gray-800 text-sm font-semibold ${
+            className={`text-gray-800 dark:text-gray-200 text-sm font-semibold ${
               status === "realizada" ? "line-through" : ""
             }`}
           >
             {descricao}
           </p>
           <small
-            className={`text-gray-500 ${
+            className={`text-gray-500 dark:text-gray-400 ${
               status === "realizada" ? "line-through" : ""
             }`}
           >

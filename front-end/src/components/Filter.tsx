@@ -53,21 +53,21 @@ function Filter({ onCategoriaChange }: FilterProps) {
   };
 
   return (
-    <div className="relative inline-block text-left z-10 ">
+    <div className="relative inline-block text-left z-10">
       {/* Botão de filtro que abre o menu suspenso */}
       <button
         type="button"
         onClick={toggleDropdown}
-        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-300 ease-in-out focus:outline-none focus:border-gray-500"
+        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 transition-all duration-300 ease-in-out focus:outline-none focus:border-gray-500 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
       >
         <FaFilter />
       </button>
       {/* Renderiza o menu suspenso quando isOpen é verdadeiro e configuraço para responsividade */}
       {isOpen && (
         <div className="
-        absolute mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 origin-top-right w-40
+        absolute mt-2 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 origin-top-right w-40
         md:w-48
-        lg:w-56  "
+        lg:w-56"
         >
           <div
             className="py-1 max-h-40 overflow-y-auto" //limitar tamanho do select
@@ -83,8 +83,8 @@ function Filter({ onCategoriaChange }: FilterProps) {
                 onClick={() => handleCategoriaChange(categoria.id)}
                 className={`block px-4 py-2 text-sm w-full text-left ${
                   categoriaAtiva === categoria.id
-                    ? "bg-gray-200 text-gray-900"
-                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                    ? "bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+                    : "text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-100"
                 }`}
                 role="menuitem"
               >
@@ -97,8 +97,8 @@ function Filter({ onCategoriaChange }: FilterProps) {
               onClick={() => handleCategoriaChange(null)}
               className={`block px-4 py-2 text-sm w-full text-left ${
                 categoriaAtiva === null
-                  ? "bg-gray-200 text-gray-900"
-                  : "text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                  ? "bg-gray-200 text-gray-900 dark:bg-gray-700 dark:text-gray-100"
+                  : "text-gray-700 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-200 dark:hover:bg-gray-600 dark:hover:text-gray-100"
               }`}
               role="menuitem"
             >

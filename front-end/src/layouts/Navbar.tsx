@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import ThemeToggleSwitch from './TonggleTheme';
 
 function Navbar() {
   // Estado para controlar a abertura e fechamento do menu
@@ -50,7 +51,7 @@ function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="focus:outline-none pointer-events-auto"
-          >
+            >
             <FaBars size={24} />
           </button>
         </div>
@@ -58,13 +59,13 @@ function Navbar() {
       {/* Lista de links de navegação */}
       <ul
         className={`
-          absolute top-20 right-0 py-2 px-4 bg-white rounded-lg shadow-lg mr-3 mt-4
-          text-center space-y-7 text-2xl font-semibold z-50
-          transform transition-transform duration-300 ease-in-out
-          ${menuOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-0 opacity-0 pointer-events-none'}
-          lg:static lg:bg-transparent lg:shadow-none lg:py-0 lg:mt-0 lg:space-y-7 lg:block lg:transform-none lg:opacity-100 lg:pointer-events-auto
+        absolute top-20 right-0 py-2 px-4 bg-white dark:bg-gray-900 dark:border dark:lg:border-none rounded-lg shadow-lg mr-3 mt-4
+        text-center space-y-7 text-2xl font-semibold z-50
+        transform transition-transform duration-300 ease-in-out
+        ${menuOpen ? 'scale-100 opacity-100 pointer-events-auto' : 'scale-0 opacity-0 pointer-events-none'}
+        lg:static lg:bg-transparent lg:shadow-none lg:py-0 lg:mt-0 lg:space-y-7 lg:block lg:transform-none lg:opacity-100 lg:pointer-events-auto
         `}
-      >
+        >
         <li>
           <NavLink
             to="/"
@@ -74,7 +75,7 @@ function Navbar() {
                 : 'no-underline'
             }
             onClick={handleNavLinkClick} // Fecha o menu ao clicar em um link
-          >
+            >
             Home
           </NavLink>
         </li>
@@ -83,11 +84,11 @@ function Navbar() {
             to="/nova-tarefa"
             className={({ isActive }) =>
               isActive
-                ? 'underline text-green-500 md:text-3xl text-xl'
+            ? 'underline text-green-500 md:text-3xl text-xl'
                 : 'no-underline'
             }
             onClick={handleNavLinkClick}
-          >
+            >
             Nova tarefa
           </NavLink>
         </li>
@@ -100,7 +101,7 @@ function Navbar() {
                 : 'no-underline'
             }
             onClick={handleNavLinkClick}
-          >
+            >
             Categorias
           </NavLink>
         </li>
@@ -109,11 +110,11 @@ function Navbar() {
             to="/tarefa-do-dia"
             className={({ isActive }) =>
               isActive
-                ? 'underline text-green-500 md:text-3xl text-xl'
-                : 'no-underline'
+            ? 'underline text-green-500 md:text-3xl text-xl'
+            : 'no-underline'
             }
             onClick={handleNavLinkClick}
-          >
+            >
             Tarefa do dia
           </NavLink>
         </li>
@@ -122,10 +123,10 @@ function Navbar() {
             to="/todas-as-tarefas"
             className={({ isActive }) =>
               isActive
-                ? 'underline text-green-500 md:text-2xl text-xl'
-                : 'no-underline'
-            }
-            onClick={handleNavLinkClick}
+            ? 'underline text-green-500 md:text-2xl text-xl'
+            : 'no-underline'
+          }
+          onClick={handleNavLinkClick}
           >
             Todas as Tarefas
           </NavLink>
@@ -150,11 +151,14 @@ function Navbar() {
               isActive
                 ? 'underline text-green-500 md:text-2xl text-xl'
                 : 'no-underline'
-            }
-            onClick={handleNavLinkClick}
-          >
+              }
+              onClick={handleNavLinkClick}
+              >
             Sobre o projeto
           </NavLink>
+        </li>
+        <li>
+        <ThemeToggleSwitch/>
         </li>
       </ul>
     </div>

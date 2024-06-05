@@ -30,9 +30,9 @@ const CategoriaItem: React.FC<CategoriaItemProps> = ({
     // Container do item da categoria com espaçamento e alinhamento.
     <div
       key={categoria.id} // Chave única para cada item da lista (necessária para listas no React).
-      className="flex justify-between mx-6 py-2 items-center"
+      className="flex justify-between mx-6 py-2 items-center text-gray-800 dark:text-gray-200"
     >
-        {/* // Exibe o ID da categoria. */}
+        {/* Exibe o ID da categoria. */}
       <p>{categoria.id}</p> 
       {editId === categoria.id ? ( // Verifica se a categoria está em modo de edição.
         // Campo de texto para editar o nome da categoria, com estilos e eventos associados.
@@ -43,7 +43,7 @@ const CategoriaItem: React.FC<CategoriaItemProps> = ({
           onBlur={handleBlur}
           onKeyDown={handleKeyDown}
           autoFocus // Foca automaticamente no campo quando ele é renderizado.
-          className="block px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm w-3/4 md:w-auto "
+          className="block px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm w-3/4 md:w-auto dark:bg-gray-700 dark:text-gray-200"
         />
       ) : (
         // Exibe o nome da categoria se não estiver em modo de edição.
@@ -51,14 +51,14 @@ const CategoriaItem: React.FC<CategoriaItemProps> = ({
       )}
        {/* Container para os botões de ação. */}
       <div className="flex space-x-2 max-h-[50vh]">
-        {/* // Botão para ativar o modo de edição da categoria. */}
+        {/* Botão para ativar o modo de edição da categoria. */}
         <button
           onClick={() => handleEdit(categoria.id, categoria.nome)}
           className="text-green-500 hover:text-green-700"
         >
           <FaPencilAlt /> 
         </button>
-        {/* // Botão para excluir a categoria. */}
+        {/* Botão para excluir a categoria. */}
         <button
           onClick={() => handleDelete(categoria.id)}
           className="text-red-500 hover:text-red-700"
@@ -67,7 +67,7 @@ const CategoriaItem: React.FC<CategoriaItemProps> = ({
         </button>
       </div>
     </div>
-  );
+  );  
 };
 
 // Exportação do componente para ser utilizado em outros lugares da aplicação.

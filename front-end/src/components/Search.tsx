@@ -16,7 +16,7 @@ const Search: React.FC<SearchProps> = ({ onSearchTextChange }) => {
 
   return (
     <div className="relative flex items-center">
-      <span className="absolute left-3 text-gray-500 text-sm">
+      <span className="absolute left-3 text-gray-500 dark:text-gray-400 text-sm">
         <FaSearch />
       </span>
       <input
@@ -24,7 +24,7 @@ const Search: React.FC<SearchProps> = ({ onSearchTextChange }) => {
         placeholder="Buscar tarefas..."
         value={searchText}
         onChange={handleInputChange}
-        className="pl-10 border rounded-md px-4 py-2 w-full transition-all duration-300 ease-in-out focus:outline-none focus:border-gray-500 text-sm"
+        className="pl-10 border rounded-md px-4 py-2 w-full transition-all duration-300 ease-in-out focus:outline-none focus:border-gray-500 text-sm dark:bg-gray-800 dark:text-gray-200 dark:placeholder-gray-400 dark:focus:border-gray-300"
         autoFocus
       />
     </div>

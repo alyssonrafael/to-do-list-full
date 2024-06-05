@@ -21,16 +21,16 @@ const CategoriaForm: React.FC<CategoriaFormProps> = ({
   // Renderização do componente.
   return (
     // Container principal do formulário com estilização para layout e sombra.
-    <div className="row-span-2 col-span-3 md:col-span-1 p-4 bg-white rounded-lg shadow-md">
-      {/* // Título do formulário. */}
-      <h2 className="text-xl font-semibold mb-4">Criar Nova Categoria</h2>
-      {/* // Formulário com evento de envio ligado à função handleSubmit. */}
+    <div className="row-span-2 col-span-3 md:col-span-1 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md">
+      {/* Título do formulário. */}
+      <h2 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200">Criar Nova Categoria</h2>
+      {/* Formulário com evento de envio ligado à função handleSubmit. */}
       <form onSubmit={handleSubmit} className="space-y-4 pb-4">
-        {/* // Campo de entrada para o nome da categoria. */}
+        {/* Campo de entrada para o nome da categoria. */}
         <div>
           <label
             htmlFor="nome"
-            className="block text-sm font-medium text-gray-700"
+            className="block text-sm font-medium text-gray-700 dark:text-gray-300"
           >
             {/* Nome da Categoria */}
           </label>
@@ -41,10 +41,10 @@ const CategoriaForm: React.FC<CategoriaFormProps> = ({
             name="nome"
             value={nomeCategoria}
             onChange={(e) => setNomeCategoria(e.target.value)}
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm dark:bg-gray-700 dark:text-gray-200"
           />
         </div>
-        {/* // Botão para submeter o formulário. */}
+        {/* Botão para submeter o formulário. */}
         <div>
           <button
             type="submit"
@@ -54,7 +54,7 @@ const CategoriaForm: React.FC<CategoriaFormProps> = ({
           </button>
         </div>
       </form>
-      {/* // Condicional para exibir o componente MensagemCard se houver uma mensagem para mostrar. */}
+      {/* Condicional para exibir o componente MensagemCard se houver uma mensagem para mostrar. */}
       {mensagem.texto && (
         <MensagemCard
           sucesso={mensagem.sucesso}

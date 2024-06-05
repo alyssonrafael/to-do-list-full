@@ -212,7 +212,7 @@ function NovaCategoria() {
         </h1>
       </div>
       {/*Divisão para a lista de categorias com estilos de layout, fundo, bordas e sombra. */}
-      <div className="row-span-2 col-span-3 md:col-span-2 p-4 bg-white rounded-lg shadow-md max-h-[40vh] overflow-y-auto">
+      <div className="row-span-2 col-span-3 md:col-span-2 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md max-h-[40vh] overflow-y-auto">
         <div className="flex justify-between mx-6 mb-4 border-b pb-2">
           <p className="font-semibold">ID</p>
           <p className="font-semibold">Categoria</p>

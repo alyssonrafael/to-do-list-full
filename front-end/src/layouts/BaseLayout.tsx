@@ -1,6 +1,4 @@
-// src/layouts/BaseLayout.tsx
-import React from 'react';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 
 type BaseLayoutProps = {
   children: ReactNode;
@@ -8,19 +6,19 @@ type BaseLayoutProps = {
 
 const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
-    <>
-      {/* adicionando configuraçoes para responsividade */}
-      <main className="mx-auto max-w-screen-lg pt-10">
-      <div
-       className="
-          grid auto-cols-auto auto-rows-auto gap-4 max-h-screen mx-6
-          md:grid md:grid-cols-2 md:auto-rows md:gap-4 md:max-h-screen md:mx-6
-          lg:grid lg:grid-cols-4 lg:auto-rows-auto lg:gap-4 lg:max-h-screen lg:overflow-hidden
-        ">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-950 dark:text-white">
+      <main className="min-h-screen mx-auto max-w-screen-2xl pt-10 lg:pt-24">
+        <div
+          className="
+            grid auto-cols-auto auto-rows-auto gap-4 mx-6
+            md:grid md:grid-cols-2 md:gap-4
+            lg:grid lg:grid-cols-4 lg:gap-4 lg:overflow-hidden
+          "
+        >
           {children}
         </div>
-      </main> 
-    </>
+      </main>
+    </div>
   );
 };
 
