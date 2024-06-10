@@ -28,7 +28,7 @@ const NovaTarefa: React.FC = () => {
   const [mensagemCount, setMensagemCount] = useState(0);
   // Efeito para carregar as categorias ao montar o componente
   useEffect(() => {
-    fetch("http://localhost:3333/api/categories")
+    fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories")
       .then((response) => response.json())
       .then((data) => setCategorias(data))
       .catch((error) => console.error("Erro ao buscar categorias:", error));
@@ -53,7 +53,7 @@ const NovaTarefa: React.FC = () => {
       // Formata a data para ISO 8601 que e o padrao no banco de dados logo o formato tem que ir o mesmo para nao erro 400
       const dataFormatada = new Date(formData.data).toISOString();
       // Envia a requisição para criar a tarefa
-      const response = await fetch("http://localhost:3333/api/tasks", {
+      const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/tasks", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

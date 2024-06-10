@@ -28,7 +28,7 @@ function NovaCategoria() {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch("http://localhost:3333/api/categories");
+        const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories");
         if (!response.ok) {
           throw new Error("Problema ao carregar as categorias");
         }
@@ -50,7 +50,7 @@ function NovaCategoria() {
     try {
       // Realiza uma requisição DELETE para a API para excluir a categoria pelo ID.
       const response = await fetch(
-        `http://localhost:3333/api/categories/${id}`,
+        `https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories/${id}`,
         {
           method: "DELETE",
         }
@@ -92,7 +92,7 @@ function NovaCategoria() {
     try {
       // Realiza uma requisição PUT para a API para atualizar a categoria.
       const response = await fetch(
-        `http://localhost:3333/api/categories/${editId}`,
+        `https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories/${editId}`,
         {
           method: "PUT",
           headers: {
@@ -174,7 +174,7 @@ function NovaCategoria() {
         return;
       }
       // Realiza uma requisição POST para a API para criar uma nova categoria.
-      const response = await fetch("http://localhost:3333/api/categories", {
+      const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
