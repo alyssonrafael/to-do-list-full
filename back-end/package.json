@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
     "dev": "node --watch --no-warnings src/server.js",
-    "build": "echo 'Running prisma generate' && prisma generate"
+    "postinstall": "prisma generate",
+    "build": "prisma generate && node src/server.js"
   },
   "keywords": [],
   "author": "",
