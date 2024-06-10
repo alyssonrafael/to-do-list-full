@@ -6,7 +6,7 @@ type BaseLayoutProps = {
 
 const BaseLayout: React.FC<BaseLayoutProps> = ({ children }) => {
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-950 dark:text-white">
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-950 dark:text-white transition-colors duration-500">
       <main className="min-h-screen mx-auto max-w-screen-2xl pt-10 lg:pt-24">
         <div
           className="
