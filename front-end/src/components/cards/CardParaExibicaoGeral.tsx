@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
+
 // Define o tipo Categoria 
 type Categoria = {
   id: number;
   nome: string;
 };
+
 // Define as propriedades  CardParaExibicaoGeral
 type CardDeTarefaProps = {
   id: number;
@@ -15,6 +17,14 @@ type CardDeTarefaProps = {
   cor: string;
   onApagarTarefa: (id: number) => void;
 };
+
+function criarDataLocal(diaString: string) {
+  const [ano, mes, dia] = diaString.split('T')[0].split('-').map(Number);
+  // Cria a data no fuso horário local
+  const dataLocal = new Date(ano, mes - 1, dia);
+  return dataLocal;
+}
+
 // componente funcional CardParaExibicaoGeral
 const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
   id,
@@ -27,11 +37,12 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
 }) => {
   // Estado local para armazenar o nome da categoria
   const [nomeCategoria, setNomeCategoria] = useState<string>("Sem Categoria");
-// efeito para buscar a categoria com base no categoriaId
+
+  // efeito para buscar a categoria com base no categoriaId
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch("http://localhost:3333/api/categories");
+        const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories");
         if (!response.ok) {
           throw new Error("Falha ao obter categorias");
         }
@@ -49,9 +60,10 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
     fetchCategorias();
   }, [categoriaId]); // O useEffect depende de categoriaId, executa novamente quando categoriaId muda
 
-  // Formata a data no formato "pt-BR"
-  const data = new Date(dia);
-  const dataFormatada = data.toLocaleDateString("pt-BR");
+
+  const data = criarDataLocal(dia);
+  // Formata a data no formato desejado (DD/MM/YYYY)
+  const dataFormatada = data.toLocaleDateString('pt-BR');
 
   return (
     <div

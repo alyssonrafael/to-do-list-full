@@ -39,7 +39,7 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
     setMensagemCount(mensagemCount + 1);
 
     try {
-      const response = await fetch(`http://localhost:3333/api/tasks/${id}`, {
+      const response = await fetch(`https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/tasks/${id}`, {
         method: "DELETE",
       });
 
@@ -59,7 +59,7 @@ const TabelaDeTodasAsTarefas: React.FC<TabelaDeTodasAsTarefasProps> = ({
   // Função para buscar as tarefas do servidor
   const fetchTarefas = async () => {
     try {
-      const response = await fetch("http://localhost:3333/api/tasks");
+      const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/tasks");
       if (!response.ok) {
         throw new Error("Problema ao buscar as tarefas");
       }

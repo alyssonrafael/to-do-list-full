@@ -26,7 +26,7 @@ function Filter({ onCategoriaChange }: FilterProps) {
     const fetchCategorias = async () => {
       // Faz uma requisição à API para buscar as categorias
       try {
-        const response = await fetch("http://localhost:3333/api/categories");
+        const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories");
         if (!response.ok) {
           throw new Error("Problema ao carregar as categorias");
         }

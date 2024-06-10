@@ -23,7 +23,7 @@ export const useCategorias = () => {
   useEffect(() => {
     const fetchCategorias = async () => {
       try {
-        const response = await fetch("http://localhost:3333/api/categories");
+        const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/categories");
         if (!response.ok) {
           throw new Error("Falha ao obter categorias");
         }
@@ -46,7 +46,7 @@ export const useTarefas = () => {
   useEffect(() => {
     const fetchTarefas = async () => {
       try {
-        const response = await fetch("http://localhost:3333/api/tasks");
+        const response = await fetch("https://to-do-list-full-alysson-rafaels-projects.vercel.app/api/tasks");
         const data: Tarefa[] = await response.json();
         const formattedData = data.map((tarefa) => ({
           ...tarefa,
