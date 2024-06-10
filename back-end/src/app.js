@@ -7,7 +7,7 @@ const app = express();
 
 // Configuração do CORS
 const corsOptions = {
-  origin: "http://localhost:5173", // Endereço do seu frontend
+  origin: ["http://localhost:5173", "https://to-do-list-full-front-end.vercel.app"], // Endereço do seu frontend
   optionsSuccessStatus: 200,
 };
 
