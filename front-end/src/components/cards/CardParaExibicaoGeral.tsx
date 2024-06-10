@@ -67,7 +67,7 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
 
   return (
     <div
-      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white dark:bg-gray-800 transition-transform transform hover:translate-y-[-5px] hover:shadow-xl`}
+      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white dark:bg-gray-800 lg:transition-transform lg:transform lg:hover:translate-y-[-5px] lg:hover:shadow-xl`}
       style={{ borderColor: cor }}
     >
       <div className="flex items-center">
@@ -102,7 +102,7 @@ const CardParaExibicaoGeral: React.FC<CardDeTarefaProps> = ({
       <div className="flex items-center">
         <button
           onClick={() => onApagarTarefa(id)}
-          className="ml-4 text-red-500 hover:text-red-700"
+          className="ml-4 text-red-500 lg:hover:text-red-700"
         >
           <FaTrash />
         </button>

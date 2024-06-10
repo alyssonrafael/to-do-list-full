@@ -57,7 +57,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
   return (
     // container principal
     <div
-      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white dark:bg-gray-800 transition-transform transform hover:translate-y-[-5px] hover:shadow-xl`}
+      className={`flex items-center justify-between border-2 py-2 px-4 m-4 rounded-2xl shadow-lg bg-white dark:bg-gray-800 lg:transition-transform lg:transform lg:hover:translate-y-[-5px] lg:hover:shadow-xl`}
       style={{ borderColor: cor }} //define a cor de borda dinamicamente
     >
       {/* Botão para mover a tarefa para 'não realizada', visível apenas quando o status é 'emProgresso' */}
@@ -65,7 +65,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
         {status === "emProgresso" && (
           <button
             onClick={() => onMoverParaNaoRealizada(id)}
-            className="mr-4 text-red-500 hover:text-red-700"
+            className="mr-4 text-red-500 lg:hover:text-red-700"
             // titulo para dizer oque a setinha faz
             title="Mover para Não Realizada" 
           >
@@ -95,7 +95,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
         {status === "não iniciado" && (
           <button
             onClick={() => onMoverParaProgresso(id)}
-            className="ml-4 text-yellow-500 hover:text-yellow-700"
+            className="ml-4 text-yellow-500 lg:hover:text-yellow-700"
             title="Mover para Em Progresso"
           >
             <ArrowRight />
@@ -106,7 +106,7 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
           <>
             <button
               onClick={() => onToggleRealizada(id)}
-              className="ml-4 text-green-500 hover:text-green-700"
+              className="ml-4 text-green-500 lg:hover:text-green-700"
               title="Mover Finalizada"
             >
               <FaCheck />
@@ -118,14 +118,14 @@ const CardDeTarefa: React.FC<CardDeTarefaProps> = ({
           <>
             <button
               onClick={() => onMoverParaProgresso(id)}
-              className="ml-4 text-yellow-500 hover:text-yellow-700"
+              className="ml-4 text-yellow-500 lg:hover:text-yellow-700"
               title="Mover para Em Progresso"
             >
               <ArrowLeft />
             </button>
             <button
               onClick={() => onApagarTarefa(id)}
-              className="ml-4 text-red-500 hover:text-red-700"
+              className="ml-4 text-red-500 lg:hover:text-red-700"
               title="Excluir Tarefa"
             >
               <FaTrash />
