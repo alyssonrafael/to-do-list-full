@@ -1,6 +1,6 @@
 import React from "react";
 import { FaArrowRight, FaArrowLeft, FaCheck, FaTrash } from "react-icons/fa6";
-import useWindowWidth from '../components/hooks/useWindowWidth';
+import useWindowWidth from '../hooks/useWindowWidth';
 import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 // Definição do tipo para a tarefa

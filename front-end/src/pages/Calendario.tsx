@@ -1,4 +1,4 @@
-import Navbar from "../layouts/Navbar";
+import Navbar from "../components/layouts/Navbar";
 import CalendarioDia from "../components/Calendario/CalendarioDias";
 
 function Calendario() {

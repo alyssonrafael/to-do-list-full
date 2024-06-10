@@ -1,9 +1,9 @@
 // Importações necessárias para o componente, incluindo React, componentes personalizados e estilos.
 import React, { useState, useEffect } from "react";
-import BaseLayout from "../layouts/BaseLayout";
-import Navbar from "../layouts/Navbar";
-import CategoriaItem from "../components/CategoriaItem";
-import CategoriaForm from "../components/CategoriaForm";
+import BaseLayout from "../components/layouts/BaseLayout";
+import Navbar from "../components/layouts/Navbar";
+import CategoriaItem from "../components/categorias/CategoriaItem";
+import CategoriaForm from "../components/categorias/CategoriaForm";
 
 // Definição da interface 'Categoria' para tipagem das categorias.
 interface Categoria {

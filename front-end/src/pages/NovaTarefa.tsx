@@ -1,8 +1,8 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import Input from "../components/Input"; //import do input para envio do formulario com a novas tarefa
-import BaseLayout from "../layouts/BaseLayout"; //import do baselayout padrao de todas as paginas
-import Navbar from "../layouts/Navbar"; // import do navbar padrao de todas as paginas
-import MensagemCard from "../components/Message"; // Importe do componente da mensagem
+import Input from "../components/categorias/Input"; //import do input para envio do formulario com a novas tarefa
+import BaseLayout from "../components/layouts/BaseLayout"; //import do baselayout padrao de todas as paginas
+import Navbar from "../components/layouts/Navbar"; // import do navbar padrao de todas as paginas
+import MensagemCard from "../components/utils/Message"; // Importe do componente da mensagem
 
 //tipos da minha categooria que vou pegar do banco de dados para lista para bosibilitar o usuario associar a tarefa a categoria
 type Categoria = {

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import BaseLayout from "../layouts/BaseLayout";
-import Navbar from "../layouts/Navbar";
+import BaseLayout from "../components/layouts/BaseLayout";
+import Navbar from "../components/layouts/Navbar";
 import Funcionalidades from "../components/Sobre/Funcionalidades";
 import Motivacao from "../components/Sobre/Motivacao";
 import TechSection from "../components/Sobre/TechSection";

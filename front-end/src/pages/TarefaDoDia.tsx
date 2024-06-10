@@ -1,9 +1,9 @@
 import { useState } from "react";
-import BaseLayout from "../layouts/BaseLayout";
-import Navbar from "../layouts/Navbar";
-import Filter from "../components/Filter";
-import Search from "../components/Search";
-import TabelaDeTarefas from "../components/TabelaDeTarefass";
+import BaseLayout from "../components/layouts/BaseLayout";
+import Navbar from "../components/layouts/Navbar";
+import Filter from "../components/utils/Filter";
+import Search from "../components/utils/Search";
+import TabelaDeTarefas from "../components/tabelas/TabelaDeTarefass";
 
 // data atual no formato "YYYY-MM-DD"
 const hoje = new Date();

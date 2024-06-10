@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import BaseLayout from "../layouts/BaseLayout";
-import Navbar from "../layouts/Navbar";
-import TabelaDeTarefas from "../components/TabelaDeTarefass";
-import Filter from "../components/Filter";
-import Search from "../components/Search";
+import BaseLayout from "../components/layouts/BaseLayout";
+import Navbar from "../components/layouts/Navbar";
+import TabelaDeTarefas from "../components/tabelas/TabelaDeTarefass";
+import Filter from "../components/utils/Filter";
+import Search from "../components/utils/Search";
 
 const Home: React.FC = () => {
   // Define o estado para armazenar a categoria selecionada

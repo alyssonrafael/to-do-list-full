@@ -1,5 +1,5 @@
 // Importação do componente MensagemCard, que é usado para mostrar mensagens de feedback.
-import MensagemCard from "./Message";
+import MensagemCard from "../utils/Message";
 
 // Definição da interface de propriedades que o componente CategoriaForm espera receber.
 interface CategoriaFormProps {

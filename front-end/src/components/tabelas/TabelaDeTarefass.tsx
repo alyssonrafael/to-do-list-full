@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import CardDeTarefa from "./CardDeTarefa";
-import MensagemCard from "../components/Message";
+import CardDeTarefa from "../cards/CardDeTarefa";
+import MensagemCard from "../utils/Message";
 
 // Define o tipo de uma tarefa
 type Tarefa = {

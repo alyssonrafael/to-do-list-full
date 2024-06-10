@@ -1,8 +1,8 @@
-import TabelaDeTodasAsTarefas from "../components/TabelaDeTodasAsTarefas"
-import BaseLayout from "../layouts/BaseLayout"
-import Navbar from "../layouts/Navbar"
-import Filter from "../components/Filter";
-import Search from "../components/Search";
+import TabelaDeTodasAsTarefas from "../components/tabelas/TabelaDeTodasAsTarefas"
+import BaseLayout from "../components/layouts/BaseLayout"
+import Navbar from "../components/layouts/Navbar"
+import Filter from "../components/utils/Filter";
+import Search from "../components/utils/Search";
 import  { useState } from "react";
 
 //muito similar a agina de home porem os componentes sao diferentes
